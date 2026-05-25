@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "resal-shop-server",
   "version": "1.0.0",
   "description": "Backend for Resal Shop - Node/Express + SQLite scaffold",
@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "better-sqlite3": "^8.2.0",
