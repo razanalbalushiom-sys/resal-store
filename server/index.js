@@ -315,7 +315,16 @@ app.get('/api/settings',(req,res)=>{
   res.json({thawani: { enabled: process.env.THAWANI_ENABLED==='true', mode: process.env.THAWANI_MODE||'test' }});
 });
 
-// Admin-only: update settings in DB (simple key/value)
+// Test endpoint - check if API is working
+app.get('/api/test', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    time: new Date().toISOString(),
+    env: process.env.NODE_ENV,
+    session: req.session ? { userId: req.session.userId, role: req.session.role } : null
+  });
+});
+
 app.post('/api/settings', (req,res)=>{
   if(!req.session.role || req.session.role!=='admin') return res.status(403).json({error:'Forbidden'});
   const updates = req.body || {};
