@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  resal-server:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./data:/app/data
+      - ../public/uploads:/app/public/uploads
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SESSION_SECRET=${SESSION_SECRET}
+      - UPLOAD_DIR=../public/uploads
+      - DB_FILE=./data/resal.db
+    restart: unless-stopped
